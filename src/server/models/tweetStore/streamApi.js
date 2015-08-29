@@ -2,18 +2,18 @@ import Promise from 'bluebird';
 import Twitter from 'twitter';
 
 
-export default
+export
 class StreamAPI {
-    constructor(options) {
-        this._twitter = new Twitter(options);
+    constructor(twitter_api_keys) {
+        this._twitter = new Twitter(twitter_api_keys),
         this._stream,
-        this._track,
+        this._reqParams,
         this._onData,
         this._onError,
         this._onDisconnect;
     }
-    track(track){
-        this._track = track;
+    reqParams(reqParams) {
+        this._reqParams = reqParams;
         return this;
     }
     onData(callback) {
@@ -30,8 +30,7 @@ class StreamAPI {
     }
     open() {
         return new Promise((resolve, reject)=> {
-            let params = { track: this._track };
-            this._twitter.stream('statuses/filter', params, (stream)=> {
+            this._twitter.stream('statuses/filter', this._reqParams, (stream)=> {
                 if(this._onData) stream.on('data', this._onData);
                 if(this._onError) stream.on('error', this._onError);
                 if(this._onDisconnect) stream.on('disconnect', this._onDisconnect);

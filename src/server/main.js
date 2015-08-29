@@ -1,14 +1,7 @@
-import TweetStore from './tweetStore';
+import { TWITTER_API_KEYS } from './config';
+import { TweetStore } from './models/exports';
 
-new TweetStore({ track: 'instagram' })
-    .start()
-    .then((streamAPI)=> {
-        setTimeout(()=> {
-            console.log('Close!');
-            streamAPI.close();
-        }, 10000);
-        setTimeout(()=> {
-            console.log('Start!');
-            streamAPI.open();
-        }, 20000);
-    });
+new TweetStore(TWITTER_API_KEYS)
+    .reqParams({ track: 'instagram' })
+    .addFilter((tweet)=> !!tweet.geo)
+    .start();

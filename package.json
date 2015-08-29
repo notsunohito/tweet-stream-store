@@ -1,8 +1,8 @@
 {
-  "name": "es6-spa-boilerplate",
+  "name": "tweet-stream-store",
   "version": "0.0.1",
   "private": true,
-  "description": "es6-spa-boilerplate",
+  "description": "tweet-stream-store",
   "main": "index.js",
   "scripts": {
     "start": "node dist/server/main.js"
