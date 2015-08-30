@@ -7,8 +7,8 @@ class TweetStore {
     constructor(twitter_api_keys) {
         this._twitter_api_keys = twitter_api_keys, 
         this._filters = [],
+        this._reqParams = {},
         this._streamAPI,
-        this._reqParams,
         this._didSave;
     }
     /*

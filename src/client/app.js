@@ -23,10 +23,10 @@ class App extends React.Component{
         this.router.start();
     }
     onClickTopButton() {
-        this.router.show('top');
+        this.router.show('/');
     }
     onClickAboutButton() {
-        this.router.show('about');
+        this.router.show('/about');
     }
     onChangePageName(pageName){
         this.setState({pageName: pageName});

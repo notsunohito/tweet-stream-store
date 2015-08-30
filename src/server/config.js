@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
 
-const TWITTER_CONSUMER_KEY        = process.env.TWITTER_CONSUMER_KEY || '';
-const TWITTER_CONSUMER_SECRET     = process.env.TWITTER_CONSUMER_KEY || '';
-const TWITTER_ACCESS_TOKEN_KEY    = process.env.TWITTER_CONSUMER_KEY || '';
-const TWITTER_ACCESS_TOKEN_SECRET = process.env.TWITTER_CONSUMER_KEY || '';
+const TWITTER_CONSUMER_KEY        = process.env.TWITTER_CONSUMER_KEY        || '';
+const TWITTER_CONSUMER_SECRET     = process.env.TWITTER_CONSUMER_SECRET     || '';
+const TWITTER_ACCESS_TOKEN_KEY    = process.env.TWITTER_ACCESS_TOKEN_KEY    || '';
+const TWITTER_ACCESS_TOKEN_SECRET = process.env.TWITTER_ACCESS_TOKEN_SECRET || '';
 
 
 export const TWITTER_API_KEYS = {

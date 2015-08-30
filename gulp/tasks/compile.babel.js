@@ -42,13 +42,9 @@ gulp.task('compile:client:move', ()=> {
 
 
 gulp.task('compile:copy', ()=> {
-    const target = path.join(config.src, '**/*');
-    const client = path.join(config.src, '/client/**/*.js');
-    const server = path.join(config.src, '/server/**/*.js');
+    const target = path.join(config.src, '**/*.{css,mustache}');
     return gulp.src(target)
         .on('error', gutil.log)
-        .pipe(gulpIgnore.exclude(client))
-        .pipe(gulpIgnore.exclude(server))
         .pipe(gulp.dest(config.dist));
 });
 

@@ -7,10 +7,10 @@ class Router{
         if(document.origin === 'null') {
             return new DummyRouter(onChangePageName);
         }
-        this.setupRouter();
+        this.setupRouter(onChangePageName);
         return router;
     }
-    setupRouter(){
+    setupRouter(onChangePageName){
         router('/', ()=> {
             onChangePageName('top');
         });
