@@ -1,12 +1,6 @@
 import { App } from './app';
 import { routers } from './routers/exports';
-import { TWITTER_API_KEYS } from './config';
-import { TweetStore } from './models/exports';
 
-// new TweetStore(TWITTER_API_KEYS)
-//     .reqParams({ track: 'instagram' })
-//     .addFilter((tweet)=> !!tweet.geo)
-//     .start();
 
 new App()
     .useMustache()
@@ -17,4 +11,5 @@ new App()
     .addRouter('/api', routers.api)
     .addRouter('/', routers.index)
     .setPort(1337)
+    .setWSPort(1338)
     .start();

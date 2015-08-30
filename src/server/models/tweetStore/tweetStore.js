@@ -48,6 +48,7 @@ class TweetStore {
         return this.start();
     }
     close() {
+        console.log('Closed!');
         this._streamAPI.close();
     }
     /*

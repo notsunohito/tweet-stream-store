@@ -3,19 +3,26 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import consolidate from 'consolidate';
+import { WebSocket } from './webSocket/exports';
 
 
 export
 class App {
     constructor() {
         this._express = express(),
-        this.port = 1337;
+        this.socket = WebSocket.instance,
+        this.port,
+        this.wsPort;
     }
     get express() {
         return this._express;
     }
     setPort(port) {
         this.port = port;
+        return this;
+    }
+    setWSPort(port) {
+        this.wsPort = port;
         return this;
     }
     useMustache() {
@@ -49,7 +56,8 @@ class App {
     }
     start() {
         this.express.listen(this.port);
-        console.log('App started on port:'+ this.port +'!');
+        this.socket.listen(this.wsPort);
+        console.log('App started on port:'+ this.port);
         return this;
     }
 }
