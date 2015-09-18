@@ -1,17 +1,14 @@
 import React from 'react';
-import App from './app';
+import { Provider } from 'react-redux';
+import App from './containers/app';
+import configureStore from './store/configureStore';
 
-var io = require('socket.io-client');
-var socket = io.connect('http://localhost:1338');
 
-socket.on('connect', function(){
-    console.log('connect!');
-});
+const store = configureStore();
 
-socket.emit('track', { track: 'instagram' });
-
-socket.on('disconnect', function(){
-    console.log('disconnect!');
-});
-
-React.render(<App />, document.getElementById('app'));
+React.render(
+  <Provider store={store}>
+    {() => <App />}
+  </Provider>,
+ document.getElementById('app')
+);
