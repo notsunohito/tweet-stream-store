@@ -17,7 +17,6 @@ class App extends Component{
         router.setURLChangedHandler(this.actions.showPage);
         router.start();
         socketIO.on('tweet', (tweet)=> this.actions.addTweet(tweet));
-        socketIO.emit('track', { track: 'instagram' });
     }
 
     render() {

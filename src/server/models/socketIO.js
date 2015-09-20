@@ -6,7 +6,6 @@ export
 class SocketIO {
     constructor() {
         this.io = socketIO(),
-        this.tweetStore = tweetStore,
         this.setUp();
     }
     setPort(port) {
@@ -20,17 +19,11 @@ class SocketIO {
     setUp() {
         this.io.on('connection', (socket)=> {
             this.socket = socket;
-            this.socket.on('disconnect', ()=> this.tweetStore.close());
-            this.socket.on('track', this.onTrack.bind(this));
+            this.socket.on('disconnect', ()=> tweetStore.close());
         });
     }
-    onTrack(data){
-        this.tweetStore
-            .reqParams({ track: data.track })
-            // .addFilter((tweet)=> !!tweet.geo)
-            .addFilter((tweet)=> tweet.lang === 'ja')
-            .onSave((err, tweet)=> this.socket.emit('tweet', tweet))
-            .start();
+    emit(event, data) {
+        this.socket.emit(event, data);
     }
 }
 

@@ -13,7 +13,7 @@ class Top extends React.Component{
     }
 
     handleClickAdd() {
-        this.props.fetchHelloWorld();
+        this.props.actions.fetchHelloWorld();
     }
 }
 

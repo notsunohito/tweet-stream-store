@@ -10,7 +10,7 @@ class Page extends React.Component {
         const { pageName } = this.props.data;
         return (
             React.createElement('div', {id: 'page'},
-                React.createElement(this.findPage(pageName), this.createPageProps(pageName))
+                React.createElement(this.findPage(pageName), this.createPageProps())
             )
         );
     }
@@ -19,15 +19,10 @@ class Page extends React.Component {
         return _.find(Index.PageClasses, (PageClass)=> PageClass.name.toLowerCase() === pageName);
     }
 
-    createPageProps(pageName) {
-        if(pageName === 'top') {
-            return {
-                data: this.props.data,
-                fetchHelloWorld: this.props.actions.fetchHelloWorld
-            };
-        };
+    createPageProps() {
         return {
-            data : this.props.data
+            data: this.props.data,
+            actions: this.props.actions
         };
     }
 }

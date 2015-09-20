@@ -31,7 +31,7 @@ class TweetStore {
         this._onSave = callback;
         return this;
     }
-    start() {
+    open() {
         console.log('Tracking `'+ this._reqParams.track +'`...');
         return new StreamAPI(this._twitter_api_keys)
             .reqParams(this._reqParams)
@@ -43,10 +43,6 @@ class TweetStore {
                 this._streamAPI = streamAPI;
                 return this;
             });
-    }
-    restart() {
-        this.close();
-        return this.start();
     }
     close() {
         console.log('Closed!');
