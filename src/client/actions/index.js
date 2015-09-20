@@ -12,14 +12,21 @@ export function showPage(pageName) {
 export function fetchHelloWorld() {
     return dispatch => {
         API.fetchHelloWorld().then((res)=> {
-            dispatch(addHelloWorld(res));
+            dispatch(addHelloWorld(res.greeting));
         });
     };
 }
 
-export function addHelloWorld(res) {
+export function addHelloWorld(greeting) {
     return {
         type: types.ADD_HELLO_WORLD,
-        greeting: res.greeting
+        greeting: greeting
+    };
+}
+
+export function addTweet(tweet) {
+    return {
+        type: types.ADD_TWEET,
+        tweet: tweet
     };
 }

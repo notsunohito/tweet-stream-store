@@ -26,6 +26,8 @@ class Page extends React.Component {
                 fetchHelloWorld: this.props.actions.fetchHelloWorld
             };
         };
-        return null;
+        return {
+            data : this.props.data
+        };
     }
 }

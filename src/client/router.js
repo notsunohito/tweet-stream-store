@@ -14,6 +14,9 @@ class Router{
         this.router('/about', ()=> {
             this.handleURLChanged('about');
         });
+        this.router('/stream', ()=> {
+            this.handleURLChanged('stream');
+        });
         this.router('*', ()=> {
             this.handleURLChanged('notfound');
         });

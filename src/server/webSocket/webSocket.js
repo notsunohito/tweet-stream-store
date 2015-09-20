@@ -32,7 +32,9 @@ class WebSocket {
     onTrack(data){
         this.tweetStore
             .reqParams({ track: data.track })
-            .addFilter((tweet)=> !!tweet.geo)
+            // .addFilter((tweet)=> !!tweet.geo)
+            .addFilter((tweet)=> tweet.lang === 'ja')
+            .didSave((err, tweet)=> this.emit('tweet', tweet))
             .start();
     }
     emit(event, data){

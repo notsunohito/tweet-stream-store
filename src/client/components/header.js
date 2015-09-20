@@ -8,6 +8,7 @@ class Header extends React.Component{
                 <p>Header</p>
                 <button onClick={this.handleClickTop.bind(this)}>Top</button>
                 <button onClick={this.handleClickAbout.bind(this)}>About</button>
+                <button onClick={this.handleClickStream.bind(this)}>Stream</button>
             </div>
         );
     }
@@ -16,5 +17,8 @@ class Header extends React.Component{
     }
     handleClickAbout() {
         this.props.showPage('about');
+    }
+    handleClickStream() {
+        this.props.showPage('stream');
     }
 }
