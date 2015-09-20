@@ -3,14 +3,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import consolidate from 'consolidate';
-import { WebSocket } from './webSocket/exports';
+import socketIO from './models/socketIO';
 
 
 export
 class App {
     constructor() {
         this._express = express(),
-        this.socket = WebSocket.instance,
+        this.socket = socketIO,
         this.port,
         this.wsPort;
     }

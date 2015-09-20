@@ -1,3 +1,4 @@
+import { TWITTER_API_KEYS } from '../../config';
 import { StreamAPI } from './streamApi';
 import { Tweet } from '../db/tweet';
 
@@ -9,7 +10,7 @@ class TweetStore {
         this._filters = [],
         this._reqParams = {},
         this._streamAPI,
-        this._didSave;
+        this._onSave;
     }
     /*
      * Public Methods
@@ -26,8 +27,8 @@ class TweetStore {
         this._filters = [];
         return this;
     }
-    didSave(callback) {
-        this._didSave = callback;
+    onSave(callback) {
+        this._onSave = callback;
         return this;
     }
     start() {
@@ -49,7 +50,7 @@ class TweetStore {
     }
     close() {
         console.log('Closed!');
-        this._streamAPI.close();
+        this._streamAPI && this._streamAPI.close();
     }
     /*
      * Private Methods
@@ -58,7 +59,7 @@ class TweetStore {
         if(this.shouldSave(tweet)) {
             Tweet.create(tweet, (err)=> {
                 if(err) console.log(err);
-                this._didSave && this._didSave.bind(this)(err, tweet);
+                this._onSave && this._onSave.bind(this)(err, tweet);
             });
         }
     }
@@ -73,3 +74,6 @@ class TweetStore {
         this.close();
     }
 }
+
+// シングルトン
+export default new TweetStore(TWITTER_API_KEYS);
