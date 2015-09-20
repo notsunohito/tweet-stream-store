@@ -10,7 +10,7 @@ const initialState = {
 export default function tops(state= initialState, action) {
     switch(action.type) {
     case ADD_HELLO_WORLD:
-        return _.assign({}, { greetings: state.greetings.concat(action.greeting) });
+        return _.assign({}, state, { greetings: state.greetings.concat(action.greeting) });
     default:
         return state;
     }
