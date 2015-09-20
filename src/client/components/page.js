@@ -7,7 +7,7 @@ export default
 class Page extends React.Component {
 
     render(){
-        const pageName = this.props.pages.pageName;
+        const { pageName } = this.props.data;
         return (
             React.createElement('div', {id: 'page'},
                 React.createElement(this.findPage(pageName), this.createPageProps(pageName))
@@ -22,8 +22,8 @@ class Page extends React.Component {
     createPageProps(pageName) {
         if(pageName === 'top') {
             return {
-                tops: this.props.tops,
-                fetchHelloWorld: this.props.topActions.fetchHelloWorld
+                data: this.props.data,
+                fetchHelloWorld: this.props.actions.fetchHelloWorld
             };
         };
         return null;

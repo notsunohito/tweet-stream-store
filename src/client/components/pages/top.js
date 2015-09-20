@@ -7,7 +7,7 @@ class Top extends React.Component{
             <div>
                 <h1>This is Top Page!</h1>
                 <button onClick={this.handleClickAdd.bind(this)}>Add</button>
-                <Greetings greetings={this.props.tops.greetings} />
+                <Greetings data={this.props.data} />
             </div>
         );
     }
@@ -19,7 +19,7 @@ class Top extends React.Component{
 
 class Greetings extends React.Component{
     render() {
-        const greetings = this.props.greetings.map((greeting)=> {
+        const greetings = this.props.data.greetings.map((greeting)=> {
             return <li>{ greeting }</li>;
         });
         return (
