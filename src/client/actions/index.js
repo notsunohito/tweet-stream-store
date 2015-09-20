@@ -30,3 +30,28 @@ export function addTweet(tweet) {
         tweet: tweet
     };
 }
+
+
+export function changeTracking(tracking) {
+    return {
+        type: types.CHANGE_TRACKING,
+        tracking: tracking
+    };
+}
+
+export function openTweetStore(params) {
+    const payload = params;
+    return dispatch => {
+        API.openTweetStore(payload).then((res)=> {
+            dispatch(changeTracking(res.tracking));
+        });
+    };
+}
+
+export function closeTweetStore() {
+    return dispatch => {
+        API.closeTweetStore().then(()=> {
+            dispatch(changeTracking(''));
+        });
+    };
+}

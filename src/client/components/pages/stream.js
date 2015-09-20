@@ -5,10 +5,25 @@ class Stream extends React.Component{
     render(){
         return (
             <div>
-                <h1>This is Stream Page!</h1>
+                { this.createTrackingCaption() }
+                <input type='text' value='instagram' />
+                <button onClick={this.handleClickTrack.bind(this)}>Track</button>
+                <button onClick={this.handleClickClose.bind(this)}>Close</button>
                 <Tweets data={this.props.data} />
             </div>
         );
+    }
+
+    createTrackingCaption() {
+        if(this.props.data.tracking) return  <p>Tracking `{ this.props.data.tracking }`...</p>;
+        return <p>Closed</p>;
+    }
+
+    handleClickTrack() {
+        this.props.actions.openTweetStore({ track: 'instagram' });
+    }
+    handleClickClose() {
+        this.props.actions.closeTweetStore();
     }
 }
 
