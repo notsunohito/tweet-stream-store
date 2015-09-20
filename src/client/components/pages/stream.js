@@ -30,7 +30,9 @@ class Tweet extends React.Component {
         const tweet = this.props.tweet;
         return(
             <li>
-                <img src={ tweet.user.profile_image_url } />
+                <a href={ 'https://twitter.com/'+ tweet.user.screen_name } target='_blank'>
+                    <img src={ tweet.user.profile_image_url } />
+                </a>
                 <div>{ tweet.user.name }</div>
                 <div>{ tweet.text }</div>
             </li>
