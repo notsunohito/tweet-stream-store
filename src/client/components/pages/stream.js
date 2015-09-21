@@ -34,6 +34,7 @@ class ControlPanel extends React.Component {
     }
     handleClickTrack() {
         const track = this.props.data.keyword;
+        if(!track) return;
         this.props.actions.openTweetStore({ track: track });
     }
     handleClickClose() {
@@ -62,8 +63,14 @@ class Tweet extends React.Component {
                     <img src={ tweet.user.profile_image_url } />
                 </a>
                 <div>{ tweet.user.name }</div>
-                <div>{ tweet.text }</div>
+                <div dangerouslySetInnerHTML={ this.attachATag( tweet.text ) }></div>
             </li>
         );
+    }
+    attachATag(text) {
+        const aTagged = text.replace(/https?:\/\/\S+/g,function(match) {
+            return '<a href="'+ match +'" target="_blank">'+ match +'</a>';
+        });
+        return { __html: aTagged};
     }
 }
