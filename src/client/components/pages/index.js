@@ -3,14 +3,11 @@ import About from './about';
 import Stream from './stream';
 import NotFound from './notfound';
 
-export default 
-class Index{
-    static get PageClasses(){
-        return [
-            Top,
-            About,
-            Stream,
-            NotFound
-        ];
-    }
-}
+const Index = [
+    Top,
+    About,
+    Stream,
+    NotFound
+];
+
+export default Index;

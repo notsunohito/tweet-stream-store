@@ -32,6 +32,13 @@ export function addTweet(tweet) {
 }
 
 
+export function changeKeyword(keyword) {
+    return {
+        type: types.CHANGE_KEYWORD,
+        keyword: keyword
+    };
+}
+
 export function changeTracking(tracking) {
     return {
         type: types.CHANGE_TRACKING,

@@ -5,6 +5,8 @@ export const ADD_HELLO_WORLD = 'ADD_HELLO_WORLD';
 
 export const ADD_TWEET = 'ADD_TWEET';
 
+export const CHANGE_KEYWORD ='CHANGE_KEYWORD';
+
 export const CHANGE_TRACKING = 'CHANGE_TRACKING';
 export const OPEN_TWEET_STORE = 'OPEN_TWEET_STORE';
 export const CLOSE_TWEET_STORE = 'CLOSE_TWEET_STORE';

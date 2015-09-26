@@ -16,7 +16,7 @@ class Page extends React.Component {
     }
 
     findPage(pageName) {
-        return _.find(Index.PageClasses, (PageClass)=> PageClass.name.toLowerCase() === pageName);
+        return _.find(Index, (PageComponent)=> PageComponent.name.toLowerCase() === pageName);
     }
 
     createPageProps() {

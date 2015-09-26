@@ -1,12 +1,19 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux';
+import {
+    SHOW_PAGE,
+    ADD_HELLO_WORLD,
+    ADD_TWEET,
+    CHANGE_KEYWORD,
+    CHANGE_TRACKING
+} from '../constants/ActionTypes';
 
-import { SHOW_PAGE, ADD_HELLO_WORLD, ADD_TWEET, CHANGE_TRACKING } from '../constants/ActionTypes';
 
 const initialState = {
     pageName: 'top',
     greetings: [],
     tweets: [],
+    keyword: 'instagram',
     tracking: ''
 };
 
@@ -21,6 +28,8 @@ export function index(state= initialState, action) {
         const tweets = [action.tweet].concat(state.tweets);
         const limit = Math.min(tweets.length, 10);
         return _.assign({}, state, { tweets:  _.take(tweets, limit)});
+    case CHANGE_KEYWORD:
+        return _.assign({}, state, { keyword: action.keyword});
     case CHANGE_TRACKING:
         return _.assign({}, state, {tracking: action.tracking});
     default:
