@@ -8,5 +8,5 @@
 ### How to start
 ```
 $ npm install
-$ gulp compile; npm start
+$ npm start
 ```
